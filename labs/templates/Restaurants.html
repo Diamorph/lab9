@@ -4,7 +4,7 @@
 {%if restaurants%}
 {%for restaurant in restaurants %}
 <div id = "rest_">
-     <p><img src = "{{MEDIA_URL}}{{ restaurant.image.url}}"></p>
+     <p><img src = "{{ restaurant.image.url}}"></p>
    <a href = "/rest/{{restaurant.id}}"> <p>Назва :{{restaurant.name}}</p></a>
     <p>Рейтинг :{{restaurant.rate}}</p>
     <p>Середній чек :{{restaurant.check}}</p>
