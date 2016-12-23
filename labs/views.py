@@ -15,12 +15,13 @@ def rest(request):
     result = "Successful add!"
     if request.method == "POST" and request.POST['name'] and request.POST['rate'] and request.POST['check'] and request.POST['date'] and request.POST['city'] and request.FILES['image']:
         form = Restaurants_Form(request.POST, request.FILES)
-        Restaurants.objects.create(name=request.POST['name'],
-                             rate=request.POST['rate'],
-                             check=request.POST['check'],
-                             city=request.POST['city'],
-                             date=request.POST['date'],
-                             image=request.FILES['image'])
+        if form.is_valid():
+            Restaurants.objects.create(name=request.POST['name'],
+                                         rate=request.POST['rate'],
+                                         check=request.POST['check'],
+                                         city=request.POST['city'],
+                                         date=request.POST['date'],
+                                         image=request.FILES['image'])
         return render(request,"main.html", {'result': result, 'user' : request.user})
     else:
         if request.method == "GET":
