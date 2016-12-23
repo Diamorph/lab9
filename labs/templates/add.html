@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block add %}
+
+<form enctype="multipart/form-data"
+        name="test" method="post" action="/rest/add/">
+ <p><b>Name:</b>
+  <input type="text" size="40" name="name" id="name">
+ </p>
+
+ <p><b>Rate:</b>
+ <input type="text" size="40" name="rate" id="rate">
+ </p>
+    <p><b>Check:</b>
+ <input type="text" size="40" name="check" id="check">
+ </p>
+    <p><b>City:</b>
+ <input type="text" size="40" name="city" id="city">
+ </p>
+    <p><b>Date:</b>
+ <input type="text" size="40" name="date" id="date">
+ </p>
+ <p><b>Image:</b>
+   <input type="file" name="image" id="image">
+   </p>
+<p>
+     <button type="submit" class="btn btn-success" id="submit-btn" disabled>Відправити</button>
+    </p>
+</form>
+
+<!--
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/rest/add/">
+ <div class="form-group">
+  <label for="name" class="col-sm-2 control-label">Назва:</label>
+  <div class="col-sm-3">
+   <input type="text" class="form-control" required name="name" id="name">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="rate" class="col-sm-2 control-label">Рейтинг:</label>
+  <div class="col-sm-1">
+   <input type="number" class="form-control" required name="rate" id="rate">
+  </div>
+ </div>
+ <div class="form-group">
+  <label for="check" class="col-sm-2 control-label">Середній чек:</label>
+  <div class="col-sm-1">
+   <input type="number" class="form-control" required name="check" id="check">
+  </div>
+ </div>
+
+     <div class="form-group">
+  <label for="city" class="col-sm-2 control-label">Місто:</label>
+  <div class="col-sm-3">
+   <input type="text" class="form-control" required name="city" id="city">
+  </div>
+ </div>
+     <div class="form-group">
+  <label for="date" class="col-sm-2 control-label">Дата</label>
+  <div class="col-sm-3">
+   <input type="date" class="form-control" required name="date" id="date">
+  </div>
+ </div>
+    
+   <div class="form-group">
+  <label  class="col-sm-2 control-label">Зображення</label>
+<input type="file" required name="image">
+    </div>
+    
+ <div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+   <button type="submit" class="btn btn-success" id="submit-btn">Відправити</button>
+  </div>
+ </div>
+</form>
+
+-->
+
+
+
+{%endblock%}

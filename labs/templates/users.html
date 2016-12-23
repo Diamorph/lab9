@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block users%}
+{%for user in users%}
+<h3>{{user.username}}</h3>
+<h6>{{user.id}}</h6>
+{%endfor%}
+{%endblock%}

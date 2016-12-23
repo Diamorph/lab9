@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+{% block Restaurants %}
+{%if restaurants%}
+{%for restaurant in restaurants %}
+<div id = "rest_">
+     <p><img src = "{{MEDIA_URL}}{{ restaurant.image.url}}"></p>
+   <a href = "/rest/{{restaurant.id}}"> <p>Назва :{{restaurant.name}}</p></a>
+    <p>Рейтинг :{{restaurant.rate}}</p>
+    <p>Середній чек :{{restaurant.check}}</p>
+    <p>Місто :{{restaurant.city}}</p>
+    <p>Дата відкриття: {{restaurant.date}}</p>
+
+<button type="button" class="btn btn-default delete-btn" data-toggle="modal" data-target="#deleteModal" value="{{restaurant.id}}">Видалити</button>
+</div>
+    <!--<form action = "/rest/del/{{restaurant.id}}/" method = "POST">
+        <button class="btn deletePost" value="{{restaurant.id}}" data-toggle="modal" data-target="#deleteModal">Видалити</button>
+        </form>
+
+<div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog" style="width:30%">
+
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Are you sure?</h4>
+
+            </div>
+            <div class="modal-footer">
+                   <button class="btn pull-left" id="delete-post" value = "" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>-->
+{% endfor%}
+
+ <!--<div class="modal fade " id="deleteModal" role="dialog">
+                    <div class="modal-dialog" style = "color:black;">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"> &times;</button>
+                          <h4 class="modal-title">Видалення</h4>
+                        </div>
+                        <div class="modal-body">
+
+<form action  = "/rest/del/{{restaurant.id}}/" method = "post" role = "form" id="form">
+  <div class="form-group">
+      <label>Видалити елемент?</label>
+  <button  type="submit" class="btn btn-success" id="delete-post" value = "">Так</button>
+   <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Ні</button>
+      </div>
+    </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>-->
+<div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog" style="width:30%">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Видалити елемент?</h4>
+
+            </div>
+            <div class="modal-footer">
+                   <button class="btn pull-left " id="delete-post" value = "" data-dismiss="modal">Так</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Ні</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if restaurants.has_previous %}
+            <a href="?page={{ restaurants.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ restaurants.number }} of {{ restaurants.paginator.num_pages }}.
+        </span>
+
+        {% if restaurants.has_next %}
+            <a href="?page={{ restaurants.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{%else%}
+    <p>Такого елемента не існує</p>
+{% endif%}
+
+
+
+{%endblock%}

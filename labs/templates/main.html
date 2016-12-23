@@ -1,0 +1,105 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+    
+
+<link href="{% static '/css/bootstrap.min.css'%}" rel="stylesheet">
+     <script src="{% static '/js/jquery-3.1.1.min.js'%}"></script>
+    <script src="{% static '/js/bootstrap.min.js'%}"></script>
+
+
+
+</head>
+<body>
+    <p>ЛАБА</p>
+{%if result%}
+    <h1>{{result}}</h1>
+    {%endif%}
+       {% if user.is_superuser %}
+    <a href = "/users/">Список юзерів</a>
+    {%endif%}
+    {% if user.is_authenticated %}
+    <a href = "/page">Заборонена сторінка</a><a/>
+    <a href = "/auth/logout">Вихід({{user}})</a>
+    {% else %}
+                <a href = "/auth/login">Вхід</a>
+                {% endif %}
+    <a href="/">Головна</a>
+    <a href="/rest/add/">Додати ресторан</a>
+
+{% block login %}
+    {%endblock%}
+<form name="sh" method = "get" action="/rest/search/">
+    <input type="text" size="40" required name="search" id="search">
+    <input class  ="button" type = "submit"  value = "Пошук">
+</form>
+      <!--<div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog" style="width:30%">
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Are you sure?</h4>
+
+            </div>
+            <div class="modal-footer">
+                   <button class="btn pull-left" id="delete-post" value = "" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>-->
+
+<!--<form enctype="multipart/form-data"
+        name="test" method="post" action="/rest/add/">
+ <p><b>Name:</b><br>
+  <input type="text" size="40" required name="name">
+ </p>
+
+ <p><b>Rate:</b>
+ <input type="text" size="40" required name = "rate">
+ </p>
+    <p><b>Check:</b>
+ <input type="text" size="40" required name = "check">
+ </p>
+    <p><b>City:</b>
+ <input type="text" size="40" required name  ="city">
+ </p>
+    <p><b>Date:</b>
+ <input type="text" size="40" required name = "date">
+ </p>
+ <p><b>Image:</b>
+   <input type="file" required name="image">
+     <input type="submit" value="Отправить">
+   </p>
+
+</form>-->
+
+
+
+
+    {%if user.is_superuser%}
+    {% block users%}
+
+    {%endblock%}
+    {%endif%}
+    {%block add%}
+    {%endblock%}
+{%block Restaurants%}
+    {%endblock%}
+
+
+<script src="{% static 'js/jquery.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src= "{% static '/js/my_script.js' %}"></script>
+
+    <script src= "{% static '/js/my_script1.js' %}"></script>
+
+</body>
+</html>
