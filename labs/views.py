@@ -15,8 +15,6 @@ def rest(request):
     result = "Successful add!"
     if request.method == "POST" and request.POST['name'] and request.POST['rate'] and request.POST['check'] and request.POST['date'] and request.POST['city'] and request.FILES['image']:
         form = Restaurants_Form(request.POST, request.FILES)
-        if form.is_valid():
-            upload_file(request.FILES['image'])
         Restaurants.objects.create(name=request.POST['name'],
                              rate=request.POST['rate'],
                              check=request.POST['check'],
