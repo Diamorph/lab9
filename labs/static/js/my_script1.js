@@ -31,12 +31,13 @@ $(document).ready(function(){
             url : "/rest/search/",
             data: {search: inp.val(), xhr: true},
             success: function(result){
-
-               //result = jQuery.parseJSON(result);
-             //alert(result);
+var elems ;
+               elems = jQuery.parseJSON(result);
+             alert(elems);
             $(".main_content").remove();
 
-            $('#new_content').append(Mustache.render("{{#result}} \
+            $('#new_content').append(Mustache.to_html("{{#elems}}\
+            <div class = 'cont'>\
              <p><img src = '{{image}}'></p>\
              <a href = '/rest/{{id}}' >\
              <p>Назва :'{{name}}'</p></a>\
@@ -44,8 +45,8 @@ $(document).ready(function(){
              <p>Середній чек: '{{check}}'</p>\
              <p>Місто:'{{city}}'</p>\
              <p>Дата:'{{date}}'</p></form>\
-
-{{/result}}", { result: result }));
+<div>\
+{{/elems}}", { elems: elems }));
 
             /*for(i in result)
             { $("#new_content").append('<p><img src = "'+result[i].image+'"></p><a href = "/rest/' +result[i].id +' " ><p>Назва :'+result[i].name+'</p></a><p>Рейтинг :'+result[i].rate+'</p><p>Середній чек: '+result[i].check +'</p><p>Місто:'+result[i].city+'</p><p>Дата:'+result[i].date+'</p></form>');
