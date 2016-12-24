@@ -63,21 +63,43 @@ def DelRestaurant(request,id):
         Restaurants.objects.get(id=int(id)).delete()
         return HttpResponse(json.dumps({'status': 'ok'}) ,content_type="application/javascript")
 
+
 def search(request):
     rests = Restaurants.objects.none()
     flag = True
-    if request.method == "GET":
-        if 'search' in request.GET:
-            search = request.GET['search'].split()
-            for val in search:
-                if flag:
-                    newrests = Restaurants.objects.filter(name__icontains=val)
-                    if newrests:
-                        rests = newrests
-                    else:
-                        continue
-                    flag = False
-        return render(request, "Restaurants.html", {'restaurants': rests, 'user' : request.user})
+    print(rests)
+    if 'search' in request.GET:
+        search = request.GET['search'].split()
+        for val in search:
+            if flag:
+                newrests = Restaurants.objects.filter(name__icontains=val)
+                if newrests:
+                    rests = newrests
+                else:
+                    continue
+                flag = False
+            else:
+                newrests = Restaurants.objects.filter(name__icontains=val)
+                if newrests:
+                    rests = newrests
+
+    return HttpResponse(json.dumps([i.dict() for i in rests ]), content_type="application/javascript")
+
+# def search(request):
+#     rests = Restaurants.objects.none()
+#     flag = True
+#     if request.method == "GET":
+#         if 'search' in request.GET:
+#             search = request.GET['search'].split()
+#             for val in search:
+#                 if flag:
+#                     newrests = Restaurants.objects.filter(name__icontains=val)
+#                     if newrests:
+#                         rests = newrests
+#                     else:
+#                         continue
+#                     flag = False
+#         return render(request, "Restaurants.html", {'restaurants': rests, 'user' : request.user})
 
 def show_user(request):
     user = request.user
