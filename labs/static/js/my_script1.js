@@ -43,7 +43,7 @@ var elems ;
              <p>Рейтинг :'{{rate}}'</p>\
              <p>Середній чек: '{{check}}'</p>\
              <p>Місто:'{{city}}'</p>\
-             <p>Дата:'{{date}}'</p>\
+             <p>'{{date}}'</p>\
 <div>\
 {{/elems}}", { elems: elems }));
 
