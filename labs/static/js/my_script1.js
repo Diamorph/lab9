@@ -33,7 +33,6 @@ $(document).ready(function(){
             success: function(result){
 var elems ;
                elems = jQuery.parseJSON(result);
-             alert(elems);
             $(".main_content").remove();
 
             $('#new_content').append(Mustache.to_html("{{#elems}}\
