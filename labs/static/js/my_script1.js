@@ -37,13 +37,13 @@ var elems ;
 
             $('#new_content').append(Mustache.to_html("{{#elems}}\
             <div class = 'cont'>\
-             <p><img src = {{image}}></p>\
-             <a href = /rest/{{id}} >\
-             <p>Назва :{{name}}</p></a>\
-             <p>Рейтинг :{{rate}}</p>\
-             <p>Середній чек: {{check}}</p>\
-             <p>Місто:{{city}}</p>\
-             
+             <p><img src = '{{image}}'></p>\
+             <a href = '/rest/{{id}}' >\
+             <p>Назва :'{{name}}'</p></a>\
+             <p>Рейтинг :'{{rate}}'</p>\
+             <p>Середній чек: '{{check}}'</p>\
+             <p>Місто:'{{city}}'</p>\
+
 <div>\
 {{/elems}}", { elems: elems }));
 
