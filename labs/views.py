@@ -82,7 +82,6 @@ def search(request):
                 newrests = Restaurants.objects.filter(name__icontains=val)
                 if newrests:
                     rests = newrests
-
     return HttpResponse(json.dumps([i.dict() for i in rests ]), content_type="application/javascript")
 
 # def search(request):

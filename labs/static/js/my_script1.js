@@ -36,7 +36,7 @@ $(document).ready(function(){
              //alert(result);
             $(".main_content").remove();
             for(i in result)
-            { $("#new_content").append('<p><img src = "'+result[i].image+'"></p><a href = "/rest/' +result[i].id +' " ><p>Назва :'+result[i].name+'</p></a><p>Рейтинг :'+result[i].rate+'</p><p>Середній чек: '+result[i].check +'</p><p>Місто:'+result[i].city+'</p><p>Дата:'+result[i].date+'</p><form action = "/restaurant/cold_dish/del/'+result[i].id+'/" method = "POST"><input class  ="button" type = "submit"  value = "Видалити"></form>');
+            { $("#new_content").append('<p><img src = "'+result[i].image+'"></p><a href = "/rest/' +result[i].id +' " ><p>Назва :'+result[i].name+'</p></a><p>Рейтинг :'+result[i].rate+'</p><p>Середній чек: '+result[i].check +'</p><p>Місто:'+result[i].city+'</p><p>Дата:'+result[i].date+'</p></form>');
             };
            
         }});
