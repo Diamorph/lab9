@@ -35,9 +35,21 @@ $(document).ready(function(){
                result = jQuery.parseJSON(result);
              //alert(result);
             $(".main_content").remove();
-            for(i in result)
+
+            $('#new_content').append(Mustache.render("{{#result}} \
+             <p><img src = '{{image}}'></p>\
+             <a href = '/rest/{{id}}' >\
+             <p>Назва :'{{name}}'</p></a>\
+             <p>Рейтинг :'{{rate}}'</p>\
+             <p>Середній чек: '{{check}}'</p>\
+             <p>Місто:'{{city}}'</p>\
+             <p>Дата:'{{date}}'</p></form>\
+
+{{/result}}", { result: result }));
+
+            /*for(i in result)
             { $("#new_content").append('<p><img src = "'+result[i].image+'"></p><a href = "/rest/' +result[i].id +' " ><p>Назва :'+result[i].name+'</p></a><p>Рейтинг :'+result[i].rate+'</p><p>Середній чек: '+result[i].check +'</p><p>Місто:'+result[i].city+'</p><p>Дата:'+result[i].date+'</p></form>');
-            };
+            };*/
            
         }});
     });
